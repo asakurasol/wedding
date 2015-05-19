@@ -1,0 +1,51 @@
+/* app css stylesheet */
+
+.backgroundImage {
+  background-image: url("img/background.jpg");
+  height: 800px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.invitation {
+  position: absolute;
+  font-size: 1.5em;
+  top: 300px;
+  left: 50px;
+  color: #FFE0FF;
+}
+
+.invitation h1 {
+  margin-bottom: 10px;
+}
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
