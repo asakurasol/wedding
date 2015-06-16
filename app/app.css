@@ -2,7 +2,7 @@
 
 .backgroundImage {
   background-image: url("img/background.jpg");
-  height: 800px;
+  height: 725px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -22,30 +22,55 @@
 }
 
 .menu {
+  text-align: center;
   list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+  border-bottom: 0.1em solid gray;
+  padding-top: 1em;
+  background-color: black;
+  height: 100px;
+  font-size: 2em;
+  border-top: 2px solid gray;
+  margin-bottom: 0px;
 }
 
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
+.menu a {
+  color: #CCC;
 }
 
 .menu > li {
   display: inline;
+  padding-left: 50px;
 }
 
 .menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+  padding-right: 1em;
 }
 
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+
+.invitation .rsvpButton {
+  margin-top: 5px;
+}
+
+.rsvp {
+  background-color: black;
+}
+
+.rsvp .content {
+  width: 80%;
+  padding: 20px;
+  margin: auto;
+  color: white;
+  min-height: 600px;
+}
+
+.rsvp input {
+  width: 50%;
+}
+
+.rsvp button {
+  float:left;
 }
