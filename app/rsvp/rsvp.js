@@ -78,10 +78,11 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
     $http.post('/rsvp/additionalguest', rsvpInfo).
       success(function(){
-
+        $scope.showStepThree = false;
+        $scope.showComplete = true;
       }).
-      error(function(){
-        
+      error(function(data, status, headers, config){
+        console.log('error in submitting additional guest information')
       })
   };
 

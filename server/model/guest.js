@@ -10,7 +10,7 @@ var GuestSchema = new Schema({
   firstname: {type: String, default : '', trim : true},
   lastname: {type: String, default : '', trim : true},
   isAttending: {type: Boolean, default: true},
-  hasPermission: {type: Boolean, default: true},
+  hasPermission: {type: Boolean, default: false},
   guests: {type: Number, default: 0},
   guestInfo: {type: Array, default: []},
   createdAt:{type : Date, default : Date.now}

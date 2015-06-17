@@ -40,9 +40,18 @@ app.post('/rsvp/email', function(req, res){
   var email = req.body.email;
 
   //given email, create a new guest, need to change to create only if not found
-  var newGuest = new Guest({email:email});
-  newGuest.save(function(err, guest){
-    res.end(email);  
+
+  Guest.findOne({email:email}, function(err, guest){
+    console.log('error is', err);
+    console.log('guest', guest);
+    if(!guest){
+      var newGuest = new Guest({email:email});
+      newGuest.save(function(err, guest){
+        res.end(email);  
+      })
+    } else {
+      res.end(email);
+    }
   })
 });
 
@@ -62,7 +71,20 @@ app.post('/rsvp/information', function(req, res){
   })
 })
 
-var server = app.listen(3000, function () {
+app.post('/rsvp/additionalguest', function(req, res){
+  var email = req.body.email;
+  var guestInfo = req.body.guestInfo;
+
+  Guest.findOne({email:email}, function(err, guest){
+    guest.guestInfo = guestInfo;
+    guest.save(function(err, guest){
+      console.log('Info saved, ', guest);
+      res.end('')
+    })
+  })
+})
+
+var server = app.listen(8000, function () {
   // var host = server.address().address;
   // var port = server.address().port;
 });
