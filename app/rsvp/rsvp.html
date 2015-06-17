@@ -1,38 +1,66 @@
 <div class="rsvp">
   <div class="content">
     <div class="form-group">
+      <div ng-hide="showComplete">
 
-      <div>
-        <h2>
-          Step 1: Enter your email
-        </h2>
-        <label>Email:</label>
-        <input type="text" ng-model="email" class="form-control">
-        <button class = "btn btn-success" ng-click="submitEmail()">
-          Submit
-        </button>
-      </div>
-
-      <div>
-        <h2>
-          Step 2: General Information
-        </h2>
-        <div>
-          <label>First Name:</label>
-          <input type="text" ng-model="firstname" class="form-control">
-
-          <label>Last Name:</label>
-          <input type="text" ng-model="lastname" class="form-control">
-
-          <label>Number of Guests:</label>
-          <input type="number" ng-model="guests" class="form-control">
+        <div class="formBox" ng-show="showStepOne">
+          <h2>
+            Step 1: Your email
+          </h2>
+          <label>Email:</label>
+          <input type="text" ng-model="email" class="form-control">
+          <button class = "btn btn-success" ng-click="submitEmail()">
+            Submit
+          </button>
         </div>
 
-        <button class = "btn btn-success" ng-click="submitRSVP()">
-          Submit
-        </button>
+        <div class="formBox" ng-show="showStepTwo"> 
+          <h2>
+            Step 2: General Information
+          </h2>
+          <div>
+            <label>Your First Name:</label>
+            <input type="text" ng-model="firstname" class="form-control">
+
+            <label>Your Last Name:</label>
+            <input type="text" ng-model="lastname" class="form-control">
+
+            <label>Number of guests other than yourself:</label>
+            <input type="number" ng-model="guests" class="form-control">
+          </div>
+
+          <button class = "btn btn-success" ng-click="submitRSVP()">
+            Submit
+          </button>
+        </div>
+
+        <div class="formBox" ng-show="showStepThree">
+          <h2>
+            Step 3: Additional Guests Information
+          </h2>
+
+          <div ng-repeat="guest in additionalGuestInfo">
+            <h4>
+              {{guest.display}}
+            </h4>
+            <label>First Name:</label>
+            <input type="text" ng-model="guest.info.firstname" class="form-control">
+
+            <label>Last Name:</label>
+            <input type="text" ng-model="guest.info.lastname" class="form-control">
+          </div>
+
+          <button class = "btn btn-success" ng-click="submitAdditionalGuest()">
+            Submit
+          </button>
+        </div>
       </div>
 
+      <div ng-show="showComplete">
+        <h2>
+          Thank you for RSVPing to our wedding, we look forward to seeing you there!
+        </h2>
+      </div>
 
     </div>
   </div>

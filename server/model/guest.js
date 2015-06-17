@@ -6,12 +6,14 @@ var Schema = mongoose.Schema;
  */
 
 var GuestSchema = new Schema({
-  email: {type : String, default : '', trim : true},
-  firstname: {type : String, default : '', trim : true},
-  lastname: {type : String, default : '', trim : true},
+  email: {type: String, default : '', trim : true},
+  firstname: {type: String, default : '', trim : true},
+  lastname: {type: String, default : '', trim : true},
+  isAttending: {type: Boolean, default: true},
+  hasPermission: {type: Boolean, default: true},
   guests: {type: Number, default: 0},
-  createdAt  : {type : Date, default : Date.now}
+  guestInfo: {type: Array, default: []},
+  createdAt:{type : Date, default : Date.now}
 });
-
 
 exports.Guest = mongoose.model('Guest', GuestSchema);

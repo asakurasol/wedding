@@ -67,10 +67,24 @@
   min-height: 600px;
 }
 
+
+.rsvp .formBox {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.rsvp .formBox h2{
+  margin-left: -2em;
+}
+
+.rsvp .formBox h2{
+  margin-left: -1em;
+}
+
 .rsvp input {
   width: 50%;
 }
 
 .rsvp button {
-  float:left;
+  margin-top: 10px;
 }

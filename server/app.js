@@ -4,13 +4,16 @@ var path = require('path')
 var bodyParser = require('body-parser')
 var root = path.join(__dirname, '../');
 var _ = require('underscore');
+var option = require('./option');
 
+console.log(option);
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/myapp');
+mongoose.connect('mongodb://localhost/myapp', option);
 var db = mongoose.connection;
 
 
 var Guest = require('./model/guest').Guest;
+
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
   Guest.find({}, function(err, docs) {
