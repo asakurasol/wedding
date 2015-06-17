@@ -4,7 +4,7 @@ var path = require('path')
 var bodyParser = require('body-parser')
 var root = path.join(__dirname, '../');
 var _ = require('underscore');
-var option = require('./option');
+var option = require('./option').option;
 
 console.log(option);
 var mongoose = require('mongoose');
@@ -84,7 +84,7 @@ app.post('/rsvp/additionalguest', function(req, res){
   })
 })
 
-var server = app.listen(8000, function () {
+var server = app.listen(9000, function () {
   // var host = server.address().address;
   // var port = server.address().port;
 });
