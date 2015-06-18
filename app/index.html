@@ -24,13 +24,13 @@
     </h1>
       You maybe invited.
       <div>
-      <button class="rsvpButton btn btn-danger btn-lg" ui-sref="rsvp">
+      <a class="rsvpButton btn btn-danger btn-lg" ui-sref="rsvp" scroll-to="menu">
         Click to RSVP
-      </button>
+      </a>
     </div>
   </div>
 
-  <ul class="menu">
+  <ul class="menu" id="menu">
     <li><a ui-sref="story">Our Story</a></li>
     <li><a ui-sref="information">Wedding Information & Directions</a></li>
     <li><a ui-sref="rsvp">RSVP</a></li>
@@ -42,6 +42,10 @@
   <![endif]-->
 
   <div ui-view></div>
+
+  <footer>
+    Have Questions? Email us at derekandsmita@gmail.com
+  </footer>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
