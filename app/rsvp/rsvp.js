@@ -17,6 +17,8 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
     $http.post('/rsvp/email', {email:$scope.email}).
       success(function(data, status, headers, config) {
+
+        console.log(data);
         //save email into the cookies
         $cookies.put('email', data);
         $scope.email = '';
@@ -85,6 +87,8 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
         console.log('error in submitting additional guest information')
       })
   };
+
+  
 
 
 }]);

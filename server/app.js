@@ -47,10 +47,12 @@ app.post('/rsvp/email', function(req, res){
     if(!guest){
       var newGuest = new Guest({email:email});
       newGuest.save(function(err, guest){
-        res.end(email);  
+        var guest = JSON.stringify(guest);
+        res.end(guest);  
       })
     } else {
-      res.end(email);
+      var guest = JSON.stringify(guest);
+      res.end(guest);
     }
   })
 });

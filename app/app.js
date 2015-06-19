@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ui.router',
   'myApp.story',
   'myApp.rsvp',
+  'myApp.directions',
   'ngCookies'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
@@ -16,14 +17,19 @@ angular.module('myApp', [
   $stateProvider
     .state('story', {
       url: "/story",
-      templateUrl: "story/view1.html"
+      templateUrl: "story/story.html",
+      controller: 'StoryCtrl'
+    })
+    .state('directions', {
+      url: "/directions",
+      templateUrl: "directions/directions.html",
+      controller: 'DirectionsCtrl'
     })
     .state('rsvp', {
       url: "/rsvp",
       templateUrl: "rsvp/rsvp.html",
       controller: 'rsvpCtrl'
     })
-
 })
 .directive('scrollTo', function ($location, $anchorScroll) {
   return function(scope, element, attrs) {
