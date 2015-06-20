@@ -4,8 +4,8 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
 .controller('rsvpCtrl', ['$scope', '$http','$cookies', '$location', '$anchorScroll', function($scope, $http, $cookies,$location, $anchorScroll){
 
-  $location.hash('menu');
-  $anchorScroll();
+  // $location.hash('menu');
+  // $anchorScroll();
 
   $scope.showStepOne = true;
   $scope.showStepTwo = false;
