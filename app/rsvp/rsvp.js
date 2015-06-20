@@ -2,9 +2,10 @@
 
 angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
-.controller('rsvpCtrl', ['$scope', '$http','$cookies', function($scope, $http, $cookies){
+.controller('rsvpCtrl', ['$scope', '$http','$cookies', '$location', '$anchorScroll', function($scope, $http, $cookies,$location, $anchorScroll){
 
-  console.log('controller loaded');
+  $location.hash('menu');
+  $anchorScroll();
 
   $scope.showStepOne = true;
   $scope.showStepTwo = false;
@@ -15,19 +16,29 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
   $scope.submitEmail = function() {
 
-    $http.post('/rsvp/email', {email:$scope.email}).
-      success(function(data, status, headers, config) {
-        //save email into the cookies
-        $cookies.put('email', data);
-        $scope.email = '';
-        $scope.showStepOne = false;
-        $scope.showStepTwo = true;
-      }).
-      error(function(data, status, headers, config) {
-        console.log('error in sending email');
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-      });
+    $scope.email = $scope.email.toLowerCase();
+
+    if($scope.email){
+      $http.post('/rsvp/email', {email:$scope.email}).
+        success(function(data, status, headers, config) {
+
+          console.log("http request succeeded", data);
+          console.log("show complete", $scope.showComplete);
+          //save email into the cookies
+          $cookies.put('email', data.email);
+          $scope.email = '';
+          $scope.showStepOne = false;
+          $scope.showStepTwo = true;
+
+          $scope.firstname = data.firstname;
+          $scope.lastname = data.lastname;
+          $scope.guests = data.guests;
+
+        }).
+        error(function(data, status, headers, config) {
+          console.log('error in sending email');
+        });
+    }
   };
 
   $scope.submitRSVP = function() {
@@ -49,10 +60,13 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
         if($scope.guests > 0){
           $scope.showStepThree = true;
           $scope.additionalGuests = $scope.guests;
+          console.log(data);
           for(var i=1; i <= $scope.guests;i++){
             var newGuest = {};
             newGuest.display = "Guest # " + i;
-            newGuest.info = {firstname: '', lastname:''}; 
+            var firstname = data.guestInfo[i-1].info.firstname || '';
+            var lastname = data.guestInfo[i-1].info.lastname || '';
+            newGuest.info = {firstname: firstname, lastname:lastname}; 
             $scope.additionalGuestInfo.push(newGuest);
           }
         } else {
@@ -85,6 +99,5 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
         console.log('error in submitting additional guest information')
       })
   };
-
 
 }]);

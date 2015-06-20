@@ -47,10 +47,12 @@ app.post('/rsvp/email', function(req, res){
     if(!guest){
       var newGuest = new Guest({email:email});
       newGuest.save(function(err, guest){
-        res.end(email);  
+        var guest = JSON.stringify(guest);
+        res.end(guest);  
       })
     } else {
-      res.end(email);
+      var guest = JSON.stringify(guest);
+      res.end(guest);
     }
   })
 });
@@ -65,7 +67,8 @@ app.post('/rsvp/information', function(req, res){
       _.extend(guest, info);
       guest.save(function(err, guest){
         console.log('guest saved');
-        res.end('');
+        var guest = JSON.stringify(guest);
+        res.end(guest);
       })
     }
   })
