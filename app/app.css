@@ -156,3 +156,26 @@ footer {
   color: #CCC;
   font-size: 1.2em;
 }
+
+@media screen and (max-width: 800px) {
+   body .content {
+    width: 100%;
+   }
+
+   body .menu > li {
+     padding-right: 2em;
+     font-size: 0.75em;
+   }
+   body .menu i {
+    display: none;
+   }
+
+   body .backgroundImage {
+     background-image: url("img/background.jpg");
+     height: 725px;
+     -webkit-background-position: center;
+     -moz-background-position: center;
+     -o-background-position: center;
+     background-position: center;
+   }
+}
