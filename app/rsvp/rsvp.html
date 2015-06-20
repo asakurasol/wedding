@@ -7,31 +7,32 @@
           <h2>
             Step 1: Enter Your Email
           </h2>
+          <p> Enter your email to start the RSVP process. If you have RSVP'd before you can enter your email information again to adjust those information </p>
+          <form novalidate>
           <label>Email:</label>
-          <input type="text" ng-model="email" class="form-control">
-          <button class = "btn btn-success" ng-click="submitEmail()">
-            Submit
-          </button>
+          <input type="email" ng-model="email" class="form-control forminput" required>
+          <input type='submit' class = "btn btn-success formbutton" ng-click="submitEmail()">
+          </input>
+          </form>
         </div>
 
         <div class="formBox" ng-show="showStepTwo"> 
           <h2>
             Step 2: General Information
           </h2>
-          <div>
+          <form>
             <label>Your First Name:</label>
-            <input type="text" ng-model="firstname" class="form-control">
+            <input type="text" ng-model="firstname" class="form-control" required>
 
             <label>Your Last Name:</label>
-            <input type="text" ng-model="lastname" class="form-control">
+            <input type="text" ng-model="lastname" class="form-control" required>
 
             <label>Number of guests other than yourself:</label>
-            <input type="number" ng-model="guests" class="form-control">
-          </div>
+            <input type="number" ng-model="guests" class="form-control" required>
 
-          <button class = "btn btn-success" ng-click="submitRSVP()">
-            Submit
-          </button>
+            <input type="submit" class="btn btn-success formbutton" ng-click="submitRSVP()">
+            </input>
+          </form>
         </div>
 
         <div class="formBox" ng-show="showStepThree">

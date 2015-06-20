@@ -4,6 +4,10 @@ body {
   font-family: 'Bad Script', cursive;
 }
 
+body p {
+  font-family: 'Roboto';
+}
+
 .backgroundImage {
   background-image: url("img/background.jpg");
   height: 725px;
@@ -109,11 +113,11 @@ body .invitation a {
   margin-left: -1em;
 }
 
-.rsvp input {
+.rsvp .forminput {
   width: 50%;
 }
 
-.rsvp button {
+.rsvp .formbutton {
   margin-top: 10px;
 }
 
