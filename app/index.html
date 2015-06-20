@@ -11,6 +11,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Satisfy|Roboto|Amatic+SC' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="app.css">
 
 </head>
@@ -20,9 +22,9 @@
 
   <div class="invitation">
     <h1>
-      This is Derek & Smita's wedding website.
+      Attending Derek & Smita's wedding?
     </h1>
-      You maybe invited.
+      
       <div>
       <a class="rsvpButton btn btn-danger btn-lg" ui-sref="rsvp" scroll-to="menu">
         Click to RSVP
@@ -31,9 +33,25 @@
   </div>
 
   <ul class="menu" id="menu">
-    <li><a ui-sref="story" scroll-to="menu">Our Story</a></li>
-    <li><a ui-sref="directions" scroll-to="menu">Information</a></li>
-    <li><a ui-sref="rsvp" scroll-to="menu">RSVP</a></li>
+    <li>
+      <a class="current" ui-sref="rsvp" active-link="active"> 
+        RSVP 
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+
+    <li>
+      <a ui-sref="story" active-link="active">
+        Our Story 
+        <i class="fa fa-book">
+        </i>
+      </a>
+    </li>
+    <li>
+      <a ui-sref="directions" active-link="active">
+        Information <i class="fa fa-car">
+      </i> </a>
+    </li>
   </ul>
 
 
@@ -44,7 +62,7 @@
   <div ui-view></div>
 
   <footer>
-    Have Questions? Email us at derekandsmita@gmail.com
+    Have questions? Email us at derekandsmita@gmail.com
   </footer>
 
   <!-- In production use:

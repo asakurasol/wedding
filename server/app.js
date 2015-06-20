@@ -67,7 +67,8 @@ app.post('/rsvp/information', function(req, res){
       _.extend(guest, info);
       guest.save(function(err, guest){
         console.log('guest saved');
-        res.end('');
+        var guest = JSON.stringify(guest);
+        res.end(guest);
       })
     }
   })

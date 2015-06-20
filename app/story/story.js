@@ -2,6 +2,7 @@
 
 angular.module('myApp.story', ['ui.router'])
 
-.controller('StoryCtrl', [function() {
-
+.controller('StoryCtrl', ['$location', '$anchorScroll', function($location, $anchorScroll) {
+  $location.hash('menu');
+  $anchorScroll();
 }]);

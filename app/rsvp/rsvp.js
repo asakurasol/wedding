@@ -2,9 +2,10 @@
 
 angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
-.controller('rsvpCtrl', ['$scope', '$http','$cookies', function($scope, $http, $cookies){
+.controller('rsvpCtrl', ['$scope', '$http','$cookies', '$location', '$anchorScroll', function($scope, $http, $cookies,$location, $anchorScroll){
 
-  console.log('controller loaded');
+  $location.hash('menu');
+  $anchorScroll();
 
   $scope.showStepOne = true;
   $scope.showStepTwo = false;
@@ -88,7 +89,7 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
       })
   };
 
-  
+
 
 
 }]);
