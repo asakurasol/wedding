@@ -16,9 +16,8 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
   $scope.submitEmail = function() {
 
-    $scope.email = $scope.email.toLowerCase();
-
     if($scope.email){
+      $scope.email = $scope.email.toLowerCase();
       $http.post('/rsvp/email', {email:$scope.email}).
         success(function(data, status, headers, config) {
 
