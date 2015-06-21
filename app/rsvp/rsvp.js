@@ -21,8 +21,6 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
       $http.post('/rsvp/email', {email:$scope.email}).
         success(function(data, status, headers, config) {
 
-          console.log("http request succeeded", data);
-          console.log("show complete", $scope.showComplete);
           //save email into the cookies
           $cookies.put('email', data.email);
           $scope.email = '';
@@ -50,22 +48,26 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
     rsvpInfo.email = $cookies.get('email');
 
-    console.log(rsvpInfo);
-
     $http.post('/rsvp/information', {info:rsvpInfo}).
       success(function(data, status, headers, config) {
+        console.log('data', data);
+        console.log('scope guests', $scope.guests);
         $scope.showStepTwo = false;
         if($scope.guests > 0){
-          $scope.showStepThree = true;
           $scope.additionalGuests = $scope.guests;
           for(var i=1; i <= $scope.guests;i++){
+            var firstname = '';
+            var lastname = '';
             var newGuest = {};
             newGuest.display = "Guest # " + i;
-            var firstname = data.guestInfo[i-1].info.firstname || '';
-            var lastname = data.guestInfo[i-1].info.lastname || '';
+            if(data.guestInfo[i-1]){
+              firstname = data.guestInfo[i-1].info.firstname || '';
+              lastname = data.guestInfo[i-1].info.lastname || '';
+            }
             newGuest.info = {firstname: firstname, lastname:lastname}; 
             $scope.additionalGuestInfo.push(newGuest);
           }
+          $scope.showStepThree = true;
         } else {
           $scope.showComplete = true;
         }
