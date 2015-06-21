@@ -99,6 +99,20 @@ body .invitation a {
   text-align: left;
 }
 
+.rsvp .content input {
+  color: black;
+  font-family: 'roboto';
+  padding: 5px;
+}
+
+.rsvp .content input.formbutton {
+  color: white !important;
+}
+
+.rsvp label {
+  width: 50%;
+  margin-top: 7px;
+}
 
 .rsvp .formBox {
   margin: 0 auto;
@@ -114,7 +128,7 @@ body .invitation a {
 }
 
 .rsvp .forminput {
-  width: 50%;
+  width: 70%;
 }
 
 .rsvp .formbutton {
@@ -152,7 +166,6 @@ footer {
   border-top: 2px solid gray;
   padding: 10px;
   text-align: center;
-  background-color: black;
   color: #CCC;
   font-size: 1.2em;
 }
@@ -177,5 +190,13 @@ footer {
      -moz-background-position: center;
      -o-background-position: center;
      background-position: center;
+   }
+
+   body .rsvp .forminput {
+     width: 90%;
+   }
+
+   body .rsvp .formBox {
+     width: 100%;
    }
 }
