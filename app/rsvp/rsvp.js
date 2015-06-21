@@ -55,11 +55,9 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
     $http.post('/rsvp/information', {info:rsvpInfo}).
       success(function(data, status, headers, config) {
         $scope.showStepTwo = false;
-
         if($scope.guests > 0){
           $scope.showStepThree = true;
           $scope.additionalGuests = $scope.guests;
-          console.log(data);
           for(var i=1; i <= $scope.guests;i++){
             var newGuest = {};
             newGuest.display = "Guest # " + i;
