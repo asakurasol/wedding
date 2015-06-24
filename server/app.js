@@ -5,6 +5,7 @@ var bodyParser = require('body-parser')
 var root = path.join(__dirname, '../');
 var _ = require('underscore');
 var option = require('./option').option;
+var winston = require('winston');
 
 console.log(option);
 var mongoose = require('mongoose');
@@ -86,6 +87,45 @@ app.post('/rsvp/additionalguest', function(req, res){
     })
   })
 })
+
+app.get('/guests/allguests', function(req, res){
+  Guest.find({}, function(err, guests){
+    console.log(guests);
+    var guests = JSON.stringify(guests);
+    res.end(guests);
+  })
+})
+
+app.post('/guests/hasPermission', function(req, res){
+  var email = req.body.email;
+
+  Guest.findOne({email:email}, function(err, guest){
+    var result = {
+      permission: guest.hasPermission
+    }
+    res.end(JSON.stringify(result));
+  })
+})
+
+
+app.post('/guests/changePermission', function(req, res){
+  var email = req.body.email;
+
+  Guest.findOne({email:email}, function(err, guest){
+
+    if(guest.hasPermission){
+      guest.hasPermission = false;
+    } else {
+      guest.hasPermission = true;
+    }
+    guest.save(function(data){
+      console.log(data);
+      res.end('');  
+    })
+  })
+})
+
+
 
 var server = app.listen(9000, function () {
   // var host = server.address().address;

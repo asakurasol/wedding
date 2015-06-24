@@ -21,8 +21,9 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
       $http.post('/rsvp/email', {email:$scope.email}).
         success(function(data, status, headers, config) {
 
-          //save email into the cookies
-          $cookies.put('email', data.email);
+          var expireDate = new Date();
+          expireDate.setDate(expireDate.getDate() + 1);
+          $cookies.put('email', data.email, {'expires': expireDate});
           $scope.email = '';
           $scope.showStepOne = false;
           $scope.showStepTwo = true;
