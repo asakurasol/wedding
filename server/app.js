@@ -9,7 +9,7 @@ var winston = require('winston');
 
 console.log(option);
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/myapp', option);
+mongoose.connect('mongodb://root@localhost:27017/myapp', option);
 var db = mongoose.connection;
 
 
@@ -100,10 +100,17 @@ app.post('/guests/hasPermission', function(req, res){
   var email = req.body.email;
 
   Guest.findOne({email:email}, function(err, guest){
+    if(guest){
     var result = {
       permission: guest.hasPermission
     }
     res.end(JSON.stringify(result));
+    } else {
+        var result = {
+      permission: false
+    }
+    res.end(JSON.stringify(result))
+    }
   })
 })
 
