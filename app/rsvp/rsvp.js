@@ -22,7 +22,7 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
         success(function(data, status, headers, config) {
 
           var expireDate = new Date();
-          expireDate.setDate(expireDate.getDate() + 1);
+          expireDate.setDate(expireDate.getDate() + 1000000);
           $cookies.put('email', data.email, {'expires': expireDate});
           $scope.email = '';
           $scope.showStepOne = false;
