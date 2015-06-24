@@ -99,13 +99,13 @@ body .invitation a {
   text-align: left;
 }
 
-.rsvp .content input {
+.content input {
   color: black;
   font-family: 'roboto';
   padding: 5px;
 }
 
-.rsvp .content input.formbutton {
+.content input.formbutton {
   color: white !important;
 }
 
