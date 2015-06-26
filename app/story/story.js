@@ -6,15 +6,15 @@ angular.module('myApp.story', ['ui.router'])
   $location.hash('menu');
   $anchorScroll();
 
-  $scope.storyIndex = [true,false,false,false,false,false,false];
+  $scope.storyIndex = [true,false,false,false,false,false];
   $scope.currentStory = 0;
   $scope.hasPermission = true;
 
   $scope.nextStory = function(){
     $scope.storyIndex[$scope.currentStory] = false;
     $scope.currentStory++;
-    if($scope.currentStory > 6){
-      $scope.currentStory = $scope.currentStory - 7;
+    if($scope.currentStory > 5){
+      $scope.currentStory = $scope.currentStory - 6;
     }
     $scope.storyIndex[$scope.currentStory] = true;
   }
