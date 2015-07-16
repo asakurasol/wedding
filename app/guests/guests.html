@@ -8,26 +8,29 @@
 
     <div ng-show="isAuth">
 
-      <table style="width:100%">
+      <table style="width:100% text-align:center">
         <tr>
           <th>email</th>
           <th>First Name</th> 
           <th>Last Name</th>
-          <th>Guests</th>
           <th>Permission</th>
+          <th>Guests</th>
+          <th>Guests Info</th>
         </tr>
 
         <tr ng-repeat="guest in guests">
           <td>{{guest.email}}</td>
           <td>{{guest.firstname}}</td> 
           <td>{{guest.lastname}}</td>
-          <td>{{guest.guests}}</td>
           <td>
             {{guest.hasPermission}}
             <button class="btn btn-warning" ng-click="changePermission(guest.email)">
-              Change Permission
+              Change
             </button>
-
+          </td>
+          <td>{{guest.guests}}</td>
+          <td ng-repeat="plusone in guest.guestInfo">
+              {{plusone.info.firstname}}, {{plusone.info.lastname}}
           </td>
 
         </tr>

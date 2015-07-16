@@ -30,6 +30,7 @@ angular.module('myApp.guests', ['ui.router'])
     $http.get('/guests/allguests').
     success(function(data){
       $scope.guests = data;
+      console.log(data);
     }).
     error(function(data){
       console.log('error loading guests', data)
