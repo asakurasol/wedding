@@ -7,15 +7,22 @@ angular.module('myApp.guests', ['ui.router'])
   $anchorScroll();
 
   $scope.guests = [];
+  $scope.isAuth = false;
 
-  var newGuest = {
-    firstname : "Derek",
-    lastname: "Wu"
-  }
-  $scope.guests.push(newGuest);
+  var password = '123';
+
+  // var newGuest = {
+  //   firstname : "Derek",
+  //   lastname: "Wu"
+  // }
+  // $scope.guests.push(newGuest);
 
   $scope.submitPwd = function() {
     console.log($scope.password);
+
+    if($scope.password === password){
+      $scope.isAuth = true;
+    }
     $scope.password = "";
   };
 
