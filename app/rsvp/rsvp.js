@@ -6,7 +6,7 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
   // $location.hash('menu');
   // $anchorScroll();
-
+  $scope.isAttending = true;
   $scope.showStepOne = true;
   $scope.showStepTwo = false;
   $scope.showStepThree = false;
@@ -15,11 +15,13 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
   $scope.additionalGuestInfo = [];
 
   $scope.submitEmail = function() {
+          console.log($scope.isAttending);
 
     if($scope.email){
       $scope.email = $scope.email.toLowerCase();
-      $http.post('/rsvp/email', {email:$scope.email}).
+      $http.post('/rsvp/email', {email:$scope.email, isAttending: $scope.isAttending}).
         success(function(data, status, headers, config) {
+
 
           var expireDate = new Date();
           expireDate.setDate(expireDate.getDate() + 1000000);

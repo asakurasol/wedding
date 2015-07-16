@@ -39,6 +39,7 @@ app.use(express.static(path.join(root, 'app')));
 
 app.post('/rsvp/email', function(req, res){
   var email = req.body.email;
+  var isAttending = req.body.isAttending;
 
   //given email, create a new guest, need to change to create only if not found
 
@@ -46,14 +47,17 @@ app.post('/rsvp/email', function(req, res){
     console.log('error is', err);
     console.log('guest', guest);
     if(!guest){
-      var newGuest = new Guest({email:email});
+      var newGuest = new Guest({email:email, isAttending:isAttending});
       newGuest.save(function(err, guest){
         var guest = JSON.stringify(guest);
         res.end(guest);  
       })
     } else {
-      var guest = JSON.stringify(guest);
-      res.end(guest);
+      guest.isAttending = isAttending;
+      guest.save(function(err, guest){
+        var guest = JSON.stringify(guest);
+        res.end(guest);
+      })
     }
   })
 });

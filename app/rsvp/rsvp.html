@@ -14,7 +14,14 @@
           <form novalidate>
           <label>Email:</label>
           <input type="email" ng-model="email" class="form-control forminput" required>
-          <input type='submit' class = "btn btn-success formbutton" ng-click="submitEmail()">
+
+          <h3>
+            Are you attending the wedding?
+          </h3>
+          <input type="radio" name="isAttending" ng-model="isAttending" value=true> Yes<br>
+          <input type="radio" name="isAttending" ng-model="isAttending" value=false> No<br>
+
+          <input type='submit' class="btn btn-success formbutton" ng-click="submitEmail()">
           </form>
         </div>
 
