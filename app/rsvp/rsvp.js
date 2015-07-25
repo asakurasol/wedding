@@ -6,6 +6,7 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
 
   // $location.hash('menu');
   // $anchorScroll();
+  $scope.showHotel = false;
   $scope.isAttending = true;
   $scope.showStepOne = true;
   $scope.showStepTwo = false;
@@ -42,6 +43,10 @@ angular.module('myApp.rsvp', ['ui.router', 'ngCookies'])
   };
 
   $scope.submitRSVP = function() {
+
+    if($scope.lastname.toLowerCase()==="bhakta"){
+      $scope.showHotel = true;
+    }
 
     var rsvpInfo = {
       firstname: $scope.firstname,

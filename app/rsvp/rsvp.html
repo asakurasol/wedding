@@ -49,6 +49,10 @@
             Step 3: Additional Guests Information
           </h2>
 
+          <div ng-show="showHotel">
+
+          </div>
+
           <form ng-repeat="guest in additionalGuestInfo">
             <h4>
               {{guest.display}}
@@ -66,7 +70,7 @@
 
       <div ng-show="showComplete">
         <h2>
-          Thank you for RSVPing to our wedding, we look forward to seeing you there!
+          Thank you for RSVPing to our wedding!
         </h2>
       </div>
 
